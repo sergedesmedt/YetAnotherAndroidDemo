@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+      package="sde.android.yadd"
+      android:versionCode="1"
+      android:versionName="1.0">
+    <uses-sdk android:minSdkVersion="10"/>
+
+    <application android:icon="@drawable/icon" android:label="@string/app_name">
+        <activity android:name="sde.android.yadd.YetAnotherDrawableDemoActivity"
+                  android:label="@string/app_name">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name="sde.android.yadd.CustomDrawableFromXMLActivity">
+        </activity>
+        <activity android:name="sde.android.yadd.CustomDrawableFromXMLConfigActivity">
+        </activity>
+        <activity android:name="sde.android.yadd.CustomDrawableActivity">
+        </activity>
+        <activity android:name="sde.android.yadd.CustomDrawableConfigActivity">
+        </activity>
+        <activity android:name="sde.android.yadd.CustomDrawableMatrixTransformationActivity">
+        </activity>
+        <activity android:name="sde.android.yadd.CustomDrawableMatrixTransformationConfigActivity">
+        </activity>
+        <activity android:name="sde.android.yadd.MatrixTransformationTypeSelectorActivity">
+        </activity>
+        <activity android:name="sde.android.yadd.MatrixTransformationRotateConfigActivity">
+        </activity>
+        <activity android:name="sde.android.yadd.MatrixTransformationScaleConfigActivity">
+        </activity>
+        <activity android:name="sde.android.yadd.MatrixTransformationSkewConfigActivity">
+        </activity>
+        <activity android:name="sde.android.yadd.MatrixTransformationTranslateConfigActivity">
+        </activity>
+        <activity android:name="sde.android.yadd.CustomDrawableCameraTransformationActivity">
+        </activity>
+        <activity android:name="sde.android.yadd.CustomDrawableCameraTransformationConfigActivity">
+        </activity>
+        <activity android:name="sde.android.yadd.CameraTransformationTypeSelectorActivity">
+        </activity>
+        <activity android:name="sde.android.yadd.CameraTransformationRotateXConfigActivity">
+        </activity>
+        <activity android:name="sde.android.yadd.CameraTransformationRotateYConfigActivity">
+        </activity>
+        <activity android:name="sde.android.yadd.CameraTransformationRotateZConfigActivity">
+        </activity>
+        <activity android:name="sde.android.yadd.CameraTransformationTranslateConfigActivity">
+        </activity>
+
+    </application>
+</manifest>

@@ -1,0 +1,1 @@
+include ':app', 'YetAnotherTouchVisualizer', 'YetAnotherThreadDemo', 'YetAnotherDrawableDemo'

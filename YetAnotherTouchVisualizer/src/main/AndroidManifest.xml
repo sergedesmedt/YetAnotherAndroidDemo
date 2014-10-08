@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+      package="sde.android.yatv"
+      android:versionCode="1"
+      android:versionName="1.0">
+    <uses-sdk android:minSdkVersion="10" />
+
+    <application android:icon="@drawable/icon" android:label="@string/app_name">
+        <activity android:name="sde.android.yatv.YetAnotherTouchVisualizerActivity"
+                  android:label="@string/app_name">
+           <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+         </activity>
+		<activity android:name="sde.android.yatv.TouchVisualizerSingleTouchGraphicActivity">
+		</activity>
+        <activity android:name="sde.android.yatv.TouchVisualizerMultiTouchGraphicActivity">
+        </activity>
+        <activity android:name="sde.android.yatv.TouchVisualizeMultiTouchHistoricActivity">
+        </activity>
+        <activity android:name="sde.android.yatv.TouchVisualizerSingleTouchDialogActivity">
+        </activity>
+        <activity android:name="sde.android.yatv.TouchVisualizerTouchGraphicConfigActivity">
+        </activity>
+        <activity android:name="sde.android.yatv.TouchVisualizerTouchHistoricConfigActivity">
+        </activity>
+        <activity android:name="sde.android.yatv.TouchVisualizerTouchDialogConfigActivity">
+        </activity>
+    </application>
+</manifest>
