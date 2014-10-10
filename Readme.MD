@@ -6,7 +6,7 @@ Included are some small Android applications demo-ing a basic concept of the pla
 2. Yet Another Drawable Demo: demo for the various possibilities of drawing some basic shapes in android
 3. Yet Another Thread Demo: demo for basic threading in android
 
-Each application has a more full description on my blob:
+Each application has a more full description on my blog:
 
 1. Yet Another Touch Visualizer: [Touch handling in Android](http://sdesmedt.wordpress.com/2012/09/12/touch-handling-in-android/)
 2. Yet Another Drawable Demo: [Drawing in Android ](http://sdesmedt.wordpress.com/2012/11/28/drawing-in-android/)
