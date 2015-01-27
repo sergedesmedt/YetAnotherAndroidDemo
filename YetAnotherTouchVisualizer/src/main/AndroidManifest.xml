@@ -1,31 +1,49 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-      package="sde.android.yatv"
-      android:versionCode="1"
-      android:versionName="1.0">
-    <uses-sdk android:minSdkVersion="10" />
+    package="sde.android.yatv"
+    android:versionCode="1"
+    android:versionName="1.0" >
 
-    <application android:icon="@drawable/icon" android:label="@string/app_name">
-        <activity android:name="sde.android.yatv.YetAnotherTouchVisualizerActivity"
-                  android:label="@string/app_name">
-           <intent-filter>
+    <uses-sdk android:minSdkVersion="15" />
+
+    <android:uses-permission
+        android:name="android.permission.WRITE_EXTERNAL_STORAGE"
+        android:maxSdkVersion="18" />
+    <android:uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <android:uses-permission
+        android:name="android.permission.READ_EXTERNAL_STORAGE"
+        android:maxSdkVersion="18" />
+
+    <application
+        android:icon="@drawable/icon"
+        android:label="@string/app_name" >
+        <activity
+            android:name=".YetAnotherTouchVisualizerActivity"
+            android:label="@string/app_name" >
+            <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-         </activity>
-		<activity android:name="sde.android.yatv.TouchVisualizerSingleTouchGraphicActivity">
-		</activity>
-        <activity android:name="sde.android.yatv.TouchVisualizerMultiTouchGraphicActivity">
         </activity>
-        <activity android:name="sde.android.yatv.TouchVisualizeMultiTouchHistoricActivity">
+        <activity android:name=".TouchVisualizerSingleTouchGraphicActivity" >
         </activity>
-        <activity android:name="sde.android.yatv.TouchVisualizerSingleTouchDialogActivity">
+        <activity android:name=".TouchVisualizerMultiTouchGraphicActivity" >
         </activity>
-        <activity android:name="sde.android.yatv.TouchVisualizerTouchGraphicConfigActivity">
+        <activity android:name=".TouchVisualizeMultiTouchHistoricActivity" >
         </activity>
-        <activity android:name="sde.android.yatv.TouchVisualizerTouchHistoricConfigActivity">
+        <activity android:name=".TouchVisualizerSingleTouchDialogActivity" >
         </activity>
-        <activity android:name="sde.android.yatv.TouchVisualizerTouchDialogConfigActivity">
+        <activity android:name=".TouchVisualizerTouchGraphicConfigActivity" >
+        </activity>
+        <activity android:name=".TouchVisualizerTouchHistoricConfigActivity" >
+        </activity>
+        <activity android:name=".TouchVisualizerTouchDialogConfigActivity" >
+        </activity>
+        <activity
+            android:name=".TouchVisualizerViewGroupActivity"
+            android:label="@string/title_activity_touch_visualizer_view_group" >
         </activity>
     </application>
+
 </manifest>
