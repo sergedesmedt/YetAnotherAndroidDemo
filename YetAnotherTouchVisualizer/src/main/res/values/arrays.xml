@@ -5,5 +5,6 @@
         <item>Graphics Multi</item>
         <item>History Multi</item>
         <item>Dialog</item>
-    </string-array>    
+        <item>ViewGroup</item>
+    </string-array>
 </resources>

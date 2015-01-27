@@ -20,9 +20,25 @@ public class TouchVisualizerSingleTouchGraphicView extends View implements View.
         
         paint.setColor(Color.WHITE);
     }
- 
+
+    public TouchVisualizerSingleTouchGraphicView(Context context, boolean drawBorder, int markerColor) {
+        super(context);
+
+        this.drawBorder = drawBorder;
+
+        this.setOnLongClickListener(this);
+        this.setOnClickListener(this);
+
+        paint.setColor(markerColor);
+    }
+
     @Override
     public void onDraw(Canvas canvas) {
+        if(drawBorder)
+        {
+            paint.setStyle(Paint.Style.STROKE);
+            canvas.drawRect(0, 0, this.getWidth()-1, this.getHeight()-1, paint);
+        }
     	if(downX > 0)
     	{
             paint.setStyle(Paint.Style.FILL);
@@ -188,6 +204,8 @@ public class TouchVisualizerSingleTouchGraphicView extends View implements View.
     private float downX = -1;
     private float downY = -1;
     private float pressure = 1;
+
+    private boolean drawBorder = false;
     
     private boolean callBaseClass = true;
     private boolean handleOnTouchEvent = true;

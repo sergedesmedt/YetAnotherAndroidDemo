@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
     <string name="hello">Hello World, YetAnotherTouchVisualizerActivity!</string>
     <string name="app_name">YetAnotherTouchVisualizer</string>
     <string name="config">Configure</string>
+    <string name="title_activity_touch_visualizer_view_group">TouchVisualizerViewGroupActivity</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+
 </resources>

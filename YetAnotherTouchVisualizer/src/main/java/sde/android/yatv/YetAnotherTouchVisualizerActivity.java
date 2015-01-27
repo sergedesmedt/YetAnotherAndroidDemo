@@ -34,6 +34,8 @@ public class YetAnotherTouchVisualizerActivity extends ListActivity {
 			myIntent = new Intent(YetAnotherTouchVisualizerActivity.this, TouchVisualizeMultiTouchHistoricActivity.class);
 		if(position == 3)
 			myIntent = new Intent(YetAnotherTouchVisualizerActivity.this, TouchVisualizerSingleTouchDialogActivity.class);
+        if(position == 4)
+            myIntent = new Intent(YetAnotherTouchVisualizerActivity.this, TouchVisualizerViewGroupActivity.class);
 
 		startActivity(myIntent);
 	}
