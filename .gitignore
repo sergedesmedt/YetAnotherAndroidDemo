@@ -2,7 +2,8 @@
 /local.properties
 
 # Android Studio
-*.iml
+# we do need the iml files
+#*.iml  
 .idea/
 /.idea/workspace.xml
 /.idea/libraries
