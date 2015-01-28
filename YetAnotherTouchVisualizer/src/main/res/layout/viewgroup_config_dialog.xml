@@ -9,4 +9,6 @@
         android:layout_height="wrap_content"
         android:text="Return TRUE from onInterceptTouchEvent"
         android:id="@+id/checkBoxTrueOnIntercept" />
+    <TextView android:text="Stop Child1 capture after seconds" android:textAppearance="?android:attr/textAppearanceLarge" android:layout_width="wrap_content" android:id="@+id/textView1" android:layout_height="wrap_content"></TextView>
+    <EditText android:id="@+id/editStopChild1CaptureTimeOut" android:layout_width="match_parent" android:layout_height="wrap_content" android:inputType="numberDecimal"></EditText>
 </LinearLayout>

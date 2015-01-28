@@ -17,6 +17,8 @@ import java.util.HashMap;
 public class TouchVisualizerViewGroupView extends ViewGroup {
 
     private boolean interceptTouchEvent;
+    private float stopChild1CaptureTimeOut;
+    private long startChild1CaptureTime;
 
     public TouchVisualizerViewGroupView(Context context) {
         super(context);
@@ -155,6 +157,15 @@ public class TouchVisualizerViewGroupView extends ViewGroup {
 
     public void setInterceptTouchEvent(boolean interceptTouchEvent) {
         this.interceptTouchEvent = interceptTouchEvent;
+    }
+
+    public float getStopChild1CaptureTimeOut() {
+        return stopChild1CaptureTimeOut;
+    }
+
+    public void setStopChild1CaptureTimeOut(float stopChild1CaptureTimeOut) {
+        this.stopChild1CaptureTimeOut = stopChild1CaptureTimeOut;
+        this.startChild1CaptureTime = System.currentTimeMillis();
     }
 
     public float getScreenSize(float lengthInMm)
