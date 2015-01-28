@@ -1,8 +1,10 @@
 package sde.android.yatv;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 
 
@@ -20,24 +22,37 @@ public class TouchVisualizerViewGroupActivity extends Activity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_touch_visualizer_view_group, menu);
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.graphic_config, menu);
         return true;
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
 
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
+        int menuItem = item.getItemId();
+        switch (menuItem) {
+            case R.id.mnu_single_graphic_config:
+                Intent myIntent = new Intent(TouchVisualizerViewGroupActivity.this, TouchVisualizerViewGroupConfigActivity.class);
+
+                Bundle b = new Bundle();
+                b.putBoolean(TouchVisualizerViewGroupConfigActivity.INTERCEPT_TOUCHEVENT, vw.getInterceptTouchEvent());
+
+                myIntent.putExtras(b);
+
+                startActivityForResult(myIntent, 0);
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
         }
+    }
 
-        return super.onOptionsItemSelected(item);
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent intent){
+        Bundle config = intent.getExtras();
+
+        vw.setInterceptTouchEvent(config.getBoolean(TouchVisualizerViewGroupConfigActivity.INTERCEPT_TOUCHEVENT));
+
     }
 
     TouchVisualizerViewGroupView vw;

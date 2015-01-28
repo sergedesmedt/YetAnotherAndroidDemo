@@ -16,10 +16,12 @@ import java.util.HashMap;
  */
 public class TouchVisualizerViewGroupView extends ViewGroup {
 
+    private boolean interceptTouchEvent;
+
     public TouchVisualizerViewGroupView(Context context) {
         super(context);
 
-        child1 = new TouchVisualizerSingleTouchGraphicView(context, true, Color.WHITE);
+        child1 = new TouchVisualizerSingleTouchGraphicView(context, true, Color.YELLOW);
         child2 = new TouchVisualizerSingleTouchGraphicView(context, true, Color.RED);
         child3 = new TouchVisualizerSingleTouchGraphicView(context, true, Color.GREEN);
         child4 = new TouchVisualizerSingleTouchGraphicView(context, true, Color.BLUE);
@@ -30,7 +32,7 @@ public class TouchVisualizerViewGroupView extends ViewGroup {
         this.addView(child4);
 
         interceptPaint.setColor(Color.RED);
-        markerPaint.setColor(Color.YELLOW);
+        markerPaint.setColor(Color.WHITE);
     }
 
     @Override
@@ -41,7 +43,7 @@ public class TouchVisualizerViewGroupView extends ViewGroup {
 
         this.invalidate();
 
-        return true;
+        return interceptTouchEvent;
     }
 
     @Override
@@ -147,6 +149,14 @@ public class TouchVisualizerViewGroupView extends ViewGroup {
         }
     }
 
+    public boolean getInterceptTouchEvent() {
+        return interceptTouchEvent;
+    }
+
+    public void setInterceptTouchEvent(boolean interceptTouchEvent) {
+        this.interceptTouchEvent = interceptTouchEvent;
+    }
+
     public float getScreenSize(float lengthInMm)
     {
         //Size_in_mm = Size_in_inches * 25.4;
@@ -160,7 +170,7 @@ public class TouchVisualizerViewGroupView extends ViewGroup {
                 getResources().getDisplayMetrics());
     }
 
-    static int padding = 20;
+    static int padding = 40;
 
     private float touchCircleRadius = (float) DefaultValues.TouchCircleRadius;
 

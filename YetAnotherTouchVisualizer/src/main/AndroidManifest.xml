@@ -40,9 +40,9 @@
         </activity>
         <activity android:name=".TouchVisualizerTouchDialogConfigActivity" >
         </activity>
-        <activity
-            android:name=".TouchVisualizerViewGroupActivity"
-            android:label="@string/title_activity_touch_visualizer_view_group" >
+        <activity android:name=".TouchVisualizerViewGroupActivity" >
+        </activity>
+        <activity android:name=".TouchVisualizerViewGroupConfigActivity" >
         </activity>
     </application>
 
