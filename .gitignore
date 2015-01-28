@@ -12,6 +12,7 @@
 .DS_Store
 
 # Gradle
-gradle
+# we do need the gradle folder or otherwise we'll need to copy it from somewhere else
+#gradle
 .gradle
 build
