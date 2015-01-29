@@ -37,6 +37,7 @@ public class TouchVisualizerViewGroupActivity extends Activity {
 
                 Bundle b = new Bundle();
                 b.putBoolean(TouchVisualizerViewGroupConfigActivity.INTERCEPT_TOUCHEVENT, vw.getInterceptTouchEvent());
+                b.putFloat(TouchVisualizerViewGroupConfigActivity.START_RETURN_TRUE_TIMEOUT, vw.getStartReturnTrueTimeOut());
                 b.putFloat(TouchVisualizerViewGroupConfigActivity.STOP_CHILD1_CAPTURE_TIMEOUT, vw.getStopChild1CaptureTimeOut());
 
                 myIntent.putExtras(b);
@@ -53,6 +54,7 @@ public class TouchVisualizerViewGroupActivity extends Activity {
         Bundle config = intent.getExtras();
 
         vw.setInterceptTouchEvent(config.getBoolean(TouchVisualizerViewGroupConfigActivity.INTERCEPT_TOUCHEVENT));
+        vw.setStartReturnTrueTimeOut(config.getFloat(TouchVisualizerViewGroupConfigActivity.START_RETURN_TRUE_TIMEOUT));
         vw.setStopChild1CaptureTimeOut(config.getFloat(TouchVisualizerViewGroupConfigActivity.STOP_CHILD1_CAPTURE_TIMEOUT));
 
     }

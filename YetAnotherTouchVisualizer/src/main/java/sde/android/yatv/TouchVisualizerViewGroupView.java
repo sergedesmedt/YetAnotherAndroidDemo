@@ -4,29 +4,29 @@ import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
+import android.graphics.Point;
 import android.util.TypedValue;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 
-import java.util.HashMap;
-
 /**
  * Created by SDesmedt on 27/01/2015.
  */
-public class TouchVisualizerViewGroupView extends ViewGroup {
+public class TouchVisualizerViewGroupView extends ViewGroup implements TouchListener {
 
     private boolean interceptTouchEvent;
-    private float stopChild1CaptureTimeOut;
-    private long startChild1CaptureTime;
+    private float startReturnTrueTimeOut = -1;
+    private long beginReturnTrueTimeOut = -1;
+    private long remainderReturnTrueTimeOut = 0;
 
     public TouchVisualizerViewGroupView(Context context) {
         super(context);
 
-        child1 = new TouchVisualizerSingleTouchGraphicView(context, true, Color.YELLOW);
-        child2 = new TouchVisualizerSingleTouchGraphicView(context, true, Color.RED);
-        child3 = new TouchVisualizerSingleTouchGraphicView(context, true, Color.GREEN);
-        child4 = new TouchVisualizerSingleTouchGraphicView(context, true, Color.BLUE);
+        child1 = new TouchVisualizerViewGroupChildView(1, context, true, Color.YELLOW, this);
+        child2 = new TouchVisualizerViewGroupChildView(2, context, true, Color.RED, this);
+        child3 = new TouchVisualizerViewGroupChildView(3, context, true, Color.GREEN, this);
+        child4 = new TouchVisualizerViewGroupChildView(4, context, true, Color.BLUE, this);
 
         this.addView(child1);
         this.addView(child2);
@@ -45,7 +45,30 @@ public class TouchVisualizerViewGroupView extends ViewGroup {
 
         this.invalidate();
 
+        remainderReturnTrueTimeOut = Math.abs(beginReturnTrueTimeOut - System.currentTimeMillis());
+        if((startReturnTrueTimeOut != -1)
+                && (interceptTouchEvent == false)
+                && (remainderReturnTrueTimeOut > startReturnTrueTimeOut)) {
+            startReturnTrueTimeOut = -1;
+            interceptTouchEvent = !interceptTouchEvent;
+        }
+
         return interceptTouchEvent;
+    }
+
+    @Override
+    public void onTouchHappened(int child, int action, float x, float y) {
+        childId = child;
+        childAction = action;
+        if(action != MotionEvent.ACTION_UP && action != MotionEvent.ACTION_CANCEL) {
+            childDownX = x;
+            childDownY = y;
+        }
+        else
+        {
+            childDownX = -1;
+            childDownY = -1;
+        }
     }
 
     @Override
@@ -109,46 +132,80 @@ public class TouchVisualizerViewGroupView extends ViewGroup {
             canvas.drawCircle(downX, downY, getScreenSize(touchCircleRadius), markerPaint);
         }
 
+        if(childDownX > 0)
+        {
+            Point ulCorner = getChildULCorner(childId, left, top, right, bottom);
+            interceptPaint.setStyle(Paint.Style.STROKE);
+            canvas.drawCircle(ulCorner.x + childDownX, ulCorner.y + childDownY, getScreenSize(touchCircleRadius + pressureRingOffset), interceptPaint);
+        }
+
+        if(beginReturnTrueTimeOut != -1) {
+            canvas.drawText(String.valueOf(remainderReturnTrueTimeOut) + "?" + String.valueOf(startReturnTrueTimeOut), 0, 10, markerPaint);
+        }
+
     }
 
     @Override
     protected void onLayout(boolean changed, int left, int top, int right, int bottom) {
         final int count = getChildCount();
 
-        int childWidth = (Math.abs(right - left) - (3*padding))/2;
-        int childHeight = (Math.abs(bottom - top) - (3*padding))/2;
+        this.left = left;
+        this.top = top;
+        this.right = right;
+        this.bottom = bottom;
+
+        childWidth = (Math.abs(right - left) - (3*padding))/2;
+        childHeight = (Math.abs(bottom - top) - (3*padding))/2;
 
         for (int i = 0; i < count; i++) {
             final View child = getChildAt(i);
+            Point ulCorner = getChildULCorner(i + 1, left, top, right, bottom);
 
             if (child == child1) {
-                child.layout(left + padding,
-                        top + padding,
+                child.layout(ulCorner.x,
+                        ulCorner.y,
                         right - (childWidth + 2*padding),
                         bottom - (childHeight + 2*padding));
             }
 
             if (child == child2) {
-                child.layout(left + (childWidth + 2*padding),
-                        top + padding,
+                child.layout(ulCorner.x,
+                        ulCorner.y,
                         right - padding,
                         bottom - (childHeight + 2*padding));
             }
 
             if (child == child3) {
-                child.layout(left + padding,
-                        top + (childHeight + 2*padding),
+                child.layout(ulCorner.x,
+                        ulCorner.y,
                         right - (childWidth + 2*padding),
                         bottom - padding);
             }
 
             if (child == child4) {
-                child.layout(left + (childWidth + 2*padding),
-                        top + (childHeight + 2*padding),
+                child.layout(ulCorner.x,
+                        ulCorner.y,
                         right - padding,
                         bottom - padding);
             }
         }
+    }
+
+    private Point getChildULCorner(int childId, int left, int top, int right, int bottom)
+    {
+        int childWidth = (Math.abs(right - left) - (3*padding))/2;
+        int childHeight = (Math.abs(bottom - top) - (3*padding))/2;
+
+        if(childId == 1)
+            return new Point(left + padding, top + padding);
+        if(childId == 2)
+            return new Point(left + (childWidth + 2*padding), top + padding);
+        if(childId == 3)
+            return new Point(left + padding, top + (childHeight + 2*padding));
+        if(childId == 4)
+            return new Point(left + (childWidth + 2*padding), top + (childHeight + 2*padding));
+
+        return null;
     }
 
     public boolean getInterceptTouchEvent() {
@@ -160,12 +217,20 @@ public class TouchVisualizerViewGroupView extends ViewGroup {
     }
 
     public float getStopChild1CaptureTimeOut() {
-        return stopChild1CaptureTimeOut;
+        return child1.getStopChild1CaptureTimeOut();
     }
 
     public void setStopChild1CaptureTimeOut(float stopChild1CaptureTimeOut) {
-        this.stopChild1CaptureTimeOut = stopChild1CaptureTimeOut;
-        this.startChild1CaptureTime = System.currentTimeMillis();
+        this.child1.setStopChild1CaptureTimeOut(stopChild1CaptureTimeOut);
+    }
+
+    public void setStartReturnTrueTimeOut(float startReturnTrueTimeOut) {
+        this.startReturnTrueTimeOut = startReturnTrueTimeOut;
+        this.beginReturnTrueTimeOut = System.currentTimeMillis();
+    }
+
+    public float getStartReturnTrueTimeOut() {
+        return startReturnTrueTimeOut;
     }
 
     public float getScreenSize(float lengthInMm)
@@ -183,7 +248,15 @@ public class TouchVisualizerViewGroupView extends ViewGroup {
 
     static int padding = 40;
 
+    int left = 0;
+    int top = 0;
+    int right = 0;
+    int bottom = 0;
+    int childWidth = 0;
+    int childHeight = 0;
+
     private float touchCircleRadius = (float) DefaultValues.TouchCircleRadius;
+    private float pressureRingOffset = (float) DefaultValues.PressureRingOffset;
 
     private Paint interceptPaint = new Paint();
     private Paint markerPaint = new Paint();
@@ -194,10 +267,15 @@ public class TouchVisualizerViewGroupView extends ViewGroup {
     private float downX = -1;
     private float downY = -1;
 
-    private TouchVisualizerSingleTouchGraphicView child1;
-    private TouchVisualizerSingleTouchGraphicView child2;
-    private TouchVisualizerSingleTouchGraphicView child3;
-    private TouchVisualizerSingleTouchGraphicView child4;
+    private int childId = -1;
+    private int childAction = -1;
+    private float childDownX = -1;
+    private float childDownY = -1;
+
+    private TouchVisualizerViewGroupChildView child1;
+    private TouchVisualizerViewGroupChildView child2;
+    private TouchVisualizerViewGroupChildView child3;
+    private TouchVisualizerViewGroupChildView child4;
 
     private boolean callBaseClass = true;
     private boolean handleOnTouchEvent = true;
