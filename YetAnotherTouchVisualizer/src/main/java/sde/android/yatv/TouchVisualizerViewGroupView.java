@@ -19,6 +19,9 @@ public class TouchVisualizerViewGroupView extends ViewGroup implements TouchList
     private float startReturnTrueTimeOut = -1;
     private long beginReturnTrueTimeOut = -1;
     private long remainderReturnTrueTimeOut = 0;
+    private float startReturnFalseInOnToucheventTimeOut = -1;
+    private long beginReturnFalseInOnToucheventTimeOut = -1;
+    private long remainderReturnFalseInOnToucheventTimeOut = 0;
 
     public TouchVisualizerViewGroupView(Context context) {
         super(context);
@@ -47,10 +50,9 @@ public class TouchVisualizerViewGroupView extends ViewGroup implements TouchList
 
         remainderReturnTrueTimeOut = Math.abs(beginReturnTrueTimeOut - System.currentTimeMillis());
         if((startReturnTrueTimeOut != -1)
-                && (interceptTouchEvent == false)
                 && (remainderReturnTrueTimeOut > startReturnTrueTimeOut)) {
             startReturnTrueTimeOut = -1;
-            interceptTouchEvent = !interceptTouchEvent;
+            return true;
         }
 
         return interceptTouchEvent;
@@ -82,6 +84,14 @@ public class TouchVisualizerViewGroupView extends ViewGroup implements TouchList
         {
             return false;
         }
+
+        remainderReturnFalseInOnToucheventTimeOut = Math.abs(beginReturnFalseInOnToucheventTimeOut - System.currentTimeMillis());
+        if((startReturnFalseInOnToucheventTimeOut != -1)
+                && (remainderReturnFalseInOnToucheventTimeOut > startReturnFalseInOnToucheventTimeOut)) {
+            startReturnFalseInOnToucheventTimeOut = -1;
+            return false;
+        }
+
 
         int action = event.getAction();
 
@@ -231,6 +241,15 @@ public class TouchVisualizerViewGroupView extends ViewGroup implements TouchList
 
     public float getStartReturnTrueTimeOut() {
         return startReturnTrueTimeOut;
+    }
+
+    public float getStartReturnFalseInOnToucheventTimeOut() {
+        return startReturnFalseInOnToucheventTimeOut;
+    }
+
+    public void setStartReturnFalseInOnToucheventTimeOut(float startReturnFalseInOnToucheventTimeOut) {
+        this.startReturnFalseInOnToucheventTimeOut = startReturnFalseInOnToucheventTimeOut;
+        this.beginReturnFalseInOnToucheventTimeOut = System.currentTimeMillis();
     }
 
     public float getScreenSize(float lengthInMm)

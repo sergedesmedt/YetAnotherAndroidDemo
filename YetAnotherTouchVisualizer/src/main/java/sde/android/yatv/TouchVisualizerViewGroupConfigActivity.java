@@ -13,6 +13,7 @@ public class TouchVisualizerViewGroupConfigActivity extends Activity {
 
     public static final String INTERCEPT_TOUCHEVENT = "INTERCEPT_TOUCHEVENT";
     public static final String START_RETURN_TRUE_TIMEOUT = "START_RETURN_TRUE_TIMEOUT";
+    public static final String START_RETURN_FALSE_ONTOUCHEVENT_TIMEOUT = "START_RETURN_FALSE_ONTOUCHEVENT_TIMEOUT";
     public static final String STOP_CHILD1_CAPTURE_TIMEOUT = "STOP_CHILD1_CAPTURE_TIMEOUT";
 
     @Override
@@ -24,6 +25,7 @@ public class TouchVisualizerViewGroupConfigActivity extends Activity {
 
         m_chkOnInterceptTouchEvent = (CheckBox)findViewById(R.id.checkBoxTrueOnIntercept);
         m_edtStartReturnTrueTimeOut = (EditText)findViewById(R.id.editStartReturnTrueTimeOut);
+        m_edtStartReturnFalseInOnTouchEventTimeOut = (EditText)findViewById(R.id.editStartReturnFalseInOnTouchTimeOut);
         m_edtStopChild1CaptureTimeOut = (EditText)findViewById(R.id.editStopChild1CaptureTimeOut);
 
         Bundle data = getIntent().getExtras();
@@ -33,6 +35,9 @@ public class TouchVisualizerViewGroupConfigActivity extends Activity {
             }
             if(data.containsKey(TouchVisualizerViewGroupConfigActivity.START_RETURN_TRUE_TIMEOUT)) {
                 m_edtStartReturnTrueTimeOut.setText(Float.toString(data.getFloat(TouchVisualizerViewGroupConfigActivity.START_RETURN_TRUE_TIMEOUT)));
+            }
+            if(data.containsKey(TouchVisualizerViewGroupConfigActivity.START_RETURN_FALSE_ONTOUCHEVENT_TIMEOUT)) {
+                m_edtStartReturnFalseInOnTouchEventTimeOut.setText(Float.toString(data.getFloat(TouchVisualizerViewGroupConfigActivity.START_RETURN_FALSE_ONTOUCHEVENT_TIMEOUT)));
             }
             if(data.containsKey(TouchVisualizerViewGroupConfigActivity.STOP_CHILD1_CAPTURE_TIMEOUT)) {
                 m_edtStopChild1CaptureTimeOut.setText(Float.toString(data.getFloat(TouchVisualizerViewGroupConfigActivity.STOP_CHILD1_CAPTURE_TIMEOUT)));
@@ -47,6 +52,7 @@ public class TouchVisualizerViewGroupConfigActivity extends Activity {
         Bundle b = new Bundle();
         b.putBoolean(TouchVisualizerViewGroupConfigActivity.INTERCEPT_TOUCHEVENT, m_chkOnInterceptTouchEvent.isChecked());
         b.putFloat(TouchVisualizerViewGroupConfigActivity.START_RETURN_TRUE_TIMEOUT, Float.parseFloat(m_edtStartReturnTrueTimeOut.getText().toString()));
+        b.putFloat(TouchVisualizerViewGroupConfigActivity.START_RETURN_FALSE_ONTOUCHEVENT_TIMEOUT, Float.parseFloat(m_edtStartReturnFalseInOnTouchEventTimeOut.getText().toString()));
         b.putFloat(TouchVisualizerViewGroupConfigActivity.STOP_CHILD1_CAPTURE_TIMEOUT, Float.parseFloat(m_edtStopChild1CaptureTimeOut.getText().toString()));
 
         result.putExtras(b);
@@ -58,5 +64,6 @@ public class TouchVisualizerViewGroupConfigActivity extends Activity {
 
     private CheckBox m_chkOnInterceptTouchEvent;
     private EditText m_edtStartReturnTrueTimeOut;
+    private EditText m_edtStartReturnFalseInOnTouchEventTimeOut;
     private EditText m_edtStopChild1CaptureTimeOut;
 }
