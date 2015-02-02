@@ -145,14 +145,17 @@ public class TouchVisualizerViewGroupView extends ViewGroup implements TouchList
         if(childDownX > 0)
         {
             Point ulCorner = getChildULCorner(childId, left, top, right, bottom);
-            interceptPaint.setStyle(Paint.Style.STROKE);
-            canvas.drawCircle(ulCorner.x + childDownX, ulCorner.y + childDownY, getScreenSize(touchCircleRadius + pressureRingOffset), interceptPaint);
+            markerPaint.setStyle(Paint.Style.STROKE);
+            canvas.drawCircle(ulCorner.x + childDownX, ulCorner.y + childDownY, getScreenSize(touchCircleRadius + pressureRingOffset), markerPaint);
         }
 
-        if(beginReturnTrueTimeOut != -1) {
+        if(startReturnTrueTimeOut != -1) {
             canvas.drawText(String.valueOf(remainderReturnTrueTimeOut) + "?" + String.valueOf(startReturnTrueTimeOut), 0, 10, markerPaint);
         }
 
+        if(startReturnFalseInOnToucheventTimeOut != -1) {
+            canvas.drawText(String.valueOf(remainderReturnFalseInOnToucheventTimeOut) + "?" + String.valueOf(startReturnFalseInOnToucheventTimeOut), 0, 20, markerPaint);
+        }
     }
 
     @Override

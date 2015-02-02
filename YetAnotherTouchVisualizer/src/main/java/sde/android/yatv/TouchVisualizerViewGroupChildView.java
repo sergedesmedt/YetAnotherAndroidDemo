@@ -13,7 +13,7 @@ import android.widget.Toast;
 /**
  * Created by sdesmedt on 29/01/2015.
  */
-public class TouchVisualizerViewGroupChildView extends View implements View.OnLongClickListener, View.OnClickListener {
+public class TouchVisualizerViewGroupChildView extends View /*implements View.OnLongClickListener, View.OnClickListener*/ {
 
     public TouchVisualizerViewGroupChildView(int childId, Context context, boolean drawBorder, int markerColor, TouchListener touchListener) {
         super(context);
@@ -23,8 +23,8 @@ public class TouchVisualizerViewGroupChildView extends View implements View.OnLo
 
         this.drawBorder = drawBorder;
 
-        this.setOnLongClickListener(this);
-        this.setOnClickListener(this);
+        //this.setOnLongClickListener(this);
+        //this.setOnClickListener(this);
 
         this.markerColor = markerColor;
         paint.setColor(this.markerColor);
@@ -32,21 +32,21 @@ public class TouchVisualizerViewGroupChildView extends View implements View.OnLo
 
     @Override
     public void onDraw(Canvas canvas) {
-        if(drawBorder)
-        {
-            paint.setStyle(Paint.Style.STROKE);
-            if(isCancelled) {
-                paint.setStyle(Paint.Style.FILL);
-            }
-            canvas.drawRect(0, 0, this.getWidth()-1, this.getHeight()-1, paint);
+        // draw a border so we can differentiate the children in thei parent
+        paint.setStyle(Paint.Style.STROKE);
+        if(isCancelled) {
+            paint.setStyle(Paint.Style.FILL);
         }
+        canvas.drawRect(0, 0, this.getWidth()-1, this.getHeight()-1, paint);
+
         if(downX > 0)
         {
             paint.setStyle(Paint.Style.FILL);
             canvas.drawCircle(downX, downY, getScreenSize(touchCircleRadius), paint);
         }
 
-        if(beginChild1CaptureTime != -1) {
+        // show the time left for the timeout to expire
+        if(stopChild1CaptureTimeOut != -1) {
             canvas.drawText(String.valueOf(remainderChild1CaptureTime) + "?" + String.valueOf(stopChild1CaptureTimeOut), 0, 10, paint);
         }
     }
@@ -68,6 +68,13 @@ public class TouchVisualizerViewGroupChildView extends View implements View.OnLo
         if(this.touchListener != null)
         {
             this.touchListener.onTouchHappened(childId, action, event.getX(), event.getY());
+        }
+
+        remainderChild1CaptureTime = Math.abs(beginChild1CaptureTime - System.currentTimeMillis());
+        if((stopChild1CaptureTimeOut != -1)
+                && (remainderChild1CaptureTime > stopChild1CaptureTimeOut)) {
+            stopChild1CaptureTimeOut = -1;
+            return false;
         }
 
         boolean result = false;
@@ -111,30 +118,23 @@ public class TouchVisualizerViewGroupChildView extends View implements View.OnLo
         }
         invalidate();
 
-        remainderChild1CaptureTime = Math.abs(beginChild1CaptureTime - System.currentTimeMillis());
-        if((stopChild1CaptureTimeOut != -1)
-                && (remainderChild1CaptureTime > stopChild1CaptureTimeOut)) {
-            stopChild1CaptureTimeOut = -1;
-            result = false;
-        }
-
         return result;
     }
 
-    @Override
-    public void onClick(View v) {
-        Toast msg = Toast.makeText(TouchVisualizerViewGroupChildView.this.getContext(), "onClick", Toast.LENGTH_SHORT);
-        msg.setGravity(Gravity.CENTER, msg.getXOffset() / 2, msg.getYOffset() / 2);
-        msg.show();
-    }
-
-    @Override
-    public boolean onLongClick(View v) {
-        Toast msg = Toast.makeText(TouchVisualizerViewGroupChildView.this.getContext(), "onLongClick", Toast.LENGTH_SHORT);
-        msg.setGravity(Gravity.CENTER, msg.getXOffset() / 2, msg.getYOffset() / 2);
-        msg.show();
-        return returnValueOnLongClick;
-    }
+//    @Override
+//    public void onClick(View v) {
+//        Toast msg = Toast.makeText(TouchVisualizerViewGroupChildView.this.getContext(), "onClick", Toast.LENGTH_SHORT);
+//        msg.setGravity(Gravity.CENTER, msg.getXOffset() / 2, msg.getYOffset() / 2);
+//        msg.show();
+//    }
+//
+//    @Override
+//    public boolean onLongClick(View v) {
+//        Toast msg = Toast.makeText(TouchVisualizerViewGroupChildView.this.getContext(), "onLongClick", Toast.LENGTH_SHORT);
+//        msg.setGravity(Gravity.CENTER, msg.getXOffset() / 2, msg.getYOffset() / 2);
+//        msg.show();
+//        return returnValueOnLongClick;
+//    }
 
     public float getScreenSize(float lengthInMm)
     {
