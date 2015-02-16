@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="fill_parent"
+    android:layout_height="match_parent">
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="New Button"
+        android:layout_row="0"
+        android:layout_column="0"  />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="New Button"
+        android:layout_row="0"
+        android:layout_column="1" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="New Button"
+        android:layout_row="0"
+        android:layout_column="2" />
+
+    <!-- the parent is the grid and not the 2 columns you're
+        trying to put hits in -->
+    <!--<Button
+        android:layout_gravity="fill_horizontal"
+        android:layout_height="wrap_content"
+        android:text="New Button"
+        android:layout_row="1"
+        android:layout_column="0"
+        android:layout_columnSpan="2" />-->
+
+    <!-- use the layout_gravity to fill the 2 columns -->
+    <Button
+        android:layout_gravity="fill_horizontal"
+        android:layout_height="wrap_content"
+        android:text="New Button"
+        android:layout_row="1"
+        android:layout_column="0"
+        android:layout_columnSpan="2" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="New Button"
+        android:layout_row="1"
+        android:layout_column="2"
+        />
+</GridLayout>
