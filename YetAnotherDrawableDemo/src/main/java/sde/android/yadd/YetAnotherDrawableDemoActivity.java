@@ -30,9 +30,11 @@ public class YetAnotherDrawableDemoActivity extends ListActivity {
 			myIntent = new Intent(YetAnotherDrawableDemoActivity.this, CustomDrawableFromXMLActivity.class);
 		if(position == 1)
 			myIntent = new Intent(YetAnotherDrawableDemoActivity.this, CustomDrawableActivity.class);
-		if(position == 2)
-			myIntent = new Intent(YetAnotherDrawableDemoActivity.this, CustomDrawableMatrixTransformationActivity.class);
+        if(position == 2)
+            myIntent = new Intent(YetAnotherDrawableDemoActivity.this, CustomDrawableGroupActivity.class);
 		if(position == 3)
+			myIntent = new Intent(YetAnotherDrawableDemoActivity.this, CustomDrawableMatrixTransformationActivity.class);
+		if(position == 4)
 			myIntent = new Intent(YetAnotherDrawableDemoActivity.this, CustomDrawableCameraTransformationActivity.class);
 
 		startActivity(myIntent);

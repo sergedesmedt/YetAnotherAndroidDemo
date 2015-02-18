@@ -7,8 +7,6 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 
-//import com.hfk.yadd.R;
-
 public class CustomDrawableActivity extends Activity {
 
 	@Override

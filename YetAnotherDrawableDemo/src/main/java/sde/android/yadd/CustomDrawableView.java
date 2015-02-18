@@ -17,8 +17,8 @@ public class CustomDrawableView extends View {
     	ovalDrawable = new ShapeDrawable(new OvalShape());
     	arcDrawable = new ShapeDrawable(new ArcShape(45, 300));
 // Line and Ring are not available, because in XML, these come from the GradientDrawable class
-//    	lineDrawable = new ShapeDrawable(new OvalShape());
-//    	ringDrawable = new ShapeDrawable(new OvalShape());
+//    	lineDrawable = new ShapeDrawable(/* nothing available here */);
+//    	ringDrawable = new ShapeDrawable(/* nothing available here */);
     }
 
     protected void onDraw(Canvas canvas) {

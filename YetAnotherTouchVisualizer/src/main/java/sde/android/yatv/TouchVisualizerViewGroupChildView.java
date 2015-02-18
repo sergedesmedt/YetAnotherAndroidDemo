@@ -222,8 +222,8 @@ public class TouchVisualizerViewGroupChildView extends View /*implements View.On
 
     private float touchCircleRadius = (float) DefaultValues.TouchCircleRadius;
 
-    private Paint paint = new Paint();
     private int markerColor;
+    private Paint paint = new Paint();
 
     private float downX = -1;
     private float downY = -1;

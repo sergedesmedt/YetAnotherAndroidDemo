@@ -21,6 +21,8 @@
         </activity>
         <activity android:name="sde.android.yadd.CustomDrawableConfigActivity">
         </activity>
+        <activity android:name="sde.android.yadd.CustomDrawableGroupActivity">
+        </activity>
         <activity android:name="sde.android.yadd.CustomDrawableMatrixTransformationActivity">
         </activity>
         <activity android:name="sde.android.yadd.CustomDrawableMatrixTransformationConfigActivity">

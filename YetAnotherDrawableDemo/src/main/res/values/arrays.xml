@@ -3,6 +3,7 @@
     <string-array name="views_available">
         <item>Drawable in XML</item>
         <item>Drawable in code</item>
+        <item>Drawable in group view</item>
         <item>Matrix Transformations</item>
         <item>Camera Transformations</item>
     </string-array>    
