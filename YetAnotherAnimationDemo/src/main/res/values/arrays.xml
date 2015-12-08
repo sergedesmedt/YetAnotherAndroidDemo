@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="views_available">
+        <item>Simple animation</item>
+    </string-array>
+</resources>

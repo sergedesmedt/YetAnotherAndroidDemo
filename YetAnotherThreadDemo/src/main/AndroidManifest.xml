@@ -17,7 +17,7 @@
         <activity android:name="sde.android.yatd.LongRunningTaskOnOwnThread" />
         <activity android:name="sde.android.yatd.HandlerBlockingHandlerActivity" />
         <activity android:name="sde.android.yatd.HandlerNonBlockingHandlerActivity" />
-        <activity android:name=".LongRunningTaskWithHandler" />
+        <!--<activity android:name="sde.android.yatd.LongRunningTaskWithHandler" />-->
         <activity android:name="sde.android.yatd.LongRunningTaskWithAsyncTask" />
         <activity android:name="sde.android.yatd.DeepDiveHandler" />
         <activity android:name="sde.android.yatd.DeepDiveAsync" />

@@ -1,1 +1,4 @@
-include 'YetAnotherTouchVisualizer', 'YetAnotherThreadDemo', 'YetAnotherDrawableDemo', 'YetAnotherLayoutDemo'
+include ':YetAnotherTouchVisualizer', ':YetAnotherAnimationDemo'
+include ':YetAnotherThreadDemo'
+include ':YetAnotherDrawableDemo'
+include ':YetAnotherLayoutDemo'
