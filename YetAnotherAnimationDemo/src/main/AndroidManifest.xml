@@ -18,7 +18,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".SimpleAnimationActivity"></activity>
+        <activity android:name=".SimpleViewAnimationActivity" />
+        <activity
+            android:name=".SimplePropertyAnimationActivity"
+            android:label="@string/title_activity_simple_property_animation"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>
