@@ -16,14 +16,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" >
 
-            <!--<Button
+            <Button
                 android:id="@+id/btnScale"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:onClick="startAnimationScale"
-                android:text="Scale" />
+                android:onClick="startPosXAnimation"
+                android:text="Animate X property" />
 
-            <Button
+            <!--<Button
                 android:id="@+id/BbtnTranslate"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
