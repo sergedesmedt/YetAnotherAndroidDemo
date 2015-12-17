@@ -22,6 +22,10 @@
         <activity
             android:name=".SimplePropertyAnimationActivity"
             android:label="@string/title_activity_simple_property_animation"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".SimpleLayoutAnimationActivity"
+            android:label="@string/title_activity_simple_layout_animation"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 

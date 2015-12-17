@@ -29,6 +29,8 @@ public class YetAnotherAnimationDemoActivity extends ListActivity {
             myIntent = new Intent(YetAnotherAnimationDemoActivity.this, SimpleViewAnimationActivity.class);
         if(position == 1)
             myIntent = new Intent(YetAnotherAnimationDemoActivity.this, SimplePropertyAnimationActivity.class);
+        if(position == 2)
+            myIntent = new Intent(YetAnotherAnimationDemoActivity.this, SimpleLayoutAnimationActivity.class);
 
         startActivity(myIntent);
     }

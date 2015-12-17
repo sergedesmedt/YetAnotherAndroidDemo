@@ -3,5 +3,6 @@
     <string-array name="views_available">
         <item>Simple view animation</item>
         <item>Simple property animation</item>
+        <item>Simple layout animation</item>
     </string-array>
 </resources>

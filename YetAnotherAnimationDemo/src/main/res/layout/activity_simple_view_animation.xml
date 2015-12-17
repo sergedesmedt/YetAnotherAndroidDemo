@@ -1,63 +1,63 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/layout"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical" >
+android:id="@+id/layout"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+android:orientation="vertical" >
 
+
+<LinearLayout
+    android:orientation="vertical"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
 
     <LinearLayout
-        android:orientation="vertical"
+        android:id="@+id/test"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content" >
 
-        <LinearLayout
-            android:id="@+id/test"
+        <Button
+            android:id="@+id/btnScale"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" >
+            android:layout_height="wrap_content"
+            android:onClick="startAnimationScale"
+            android:text="Scale" />
 
-            <Button
-                android:id="@+id/btnScale"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:onClick="startAnimationScale"
-                android:text="Scale" />
+        <Button
+            android:id="@+id/BbtnTranslate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="startAnimationTranslate"
+            android:text="Translation" />
 
-            <Button
-                android:id="@+id/BbtnTranslate"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:onClick="startAnimationTranslate"
-                android:text="Translation" />
-
-            <Button
-                android:id="@+id/btnScaleAndRotate"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:onClick="startAnimationScaleAndRotate"
-                android:text="Scale and Rotate" >
-            </Button>
-
-        </LinearLayout>
+        <Button
+            android:id="@+id/btnScaleAndRotate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="startAnimationScaleAndRotate"
+            android:text="Scale and Rotate" >
+        </Button>
 
     </LinearLayout>
 
-    <ImageView
-        android:id="@+id/imageView1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
-        android:src="@drawable/icon" />
+</LinearLayout>
 
-    <TextView
-        android:id="@+id/textView1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/imageView1"
-        android:layout_alignRight="@+id/imageView1"
-        android:layout_marginBottom="30dp"
-        android:text="Some text"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
+<ImageView
+    android:id="@+id/imageView1"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_centerHorizontal="true"
+    android:layout_centerVertical="true"
+    android:src="@drawable/icon" />
+
+<TextView
+    android:id="@+id/textView1"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_above="@+id/imageView1"
+    android:layout_alignRight="@+id/imageView1"
+    android:layout_marginBottom="30dp"
+    android:text="Some text"
+    android:textAppearance="?android:attr/textAppearanceLarge" />
 
 </RelativeLayout>
