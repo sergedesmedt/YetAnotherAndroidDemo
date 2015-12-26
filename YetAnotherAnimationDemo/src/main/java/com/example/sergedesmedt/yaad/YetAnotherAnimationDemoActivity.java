@@ -31,6 +31,12 @@ public class YetAnotherAnimationDemoActivity extends ListActivity {
             myIntent = new Intent(YetAnotherAnimationDemoActivity.this, SimplePropertyAnimationActivity.class);
         if(position == 2)
             myIntent = new Intent(YetAnotherAnimationDemoActivity.this, SimpleLayoutAnimationActivity.class);
+        if(position == 3)
+            myIntent = new Intent(YetAnotherAnimationDemoActivity.this, ComplexAnimationSampleActivity.class);
+        if(position == 4)
+            myIntent = new Intent(YetAnotherAnimationDemoActivity.this, InsertingCellsActivity.class);
+        if(position == 5)
+            myIntent = new Intent(YetAnotherAnimationDemoActivity.this, ListViewRemovalAnimation.class);
 
         startActivity(myIntent);
     }

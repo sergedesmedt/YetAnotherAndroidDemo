@@ -4,5 +4,8 @@
         <item>Simple view animation</item>
         <item>Simple property animation</item>
         <item>Simple layout animation</item>
+        <item>Complex custom animation</item>
+        <item>Listview cell insertion</item>
+        <item>Listview cell deletion</item>
     </string-array>
 </resources>
